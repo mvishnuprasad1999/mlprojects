@@ -1,2 +1,2 @@
-# This is my ML project README
+# This is ML project README
 
