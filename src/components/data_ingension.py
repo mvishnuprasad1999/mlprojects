@@ -7,8 +7,7 @@ from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 from src.components.data_transfromation import DataTransformation
 from src.components.data_transfromation import DataTransformationConfig
-# from src.components.model_trainer import ModelTrainerConfig
-# from src.components.model_trainer import ModelTrainer
+from src.components.model_trainer import ModelTrainer
 
 @dataclass
 class DataIngestionconfig:
@@ -23,7 +22,9 @@ class DataIngestion:
     def initiate_data_ingension(self):
         logging.info("Entered to the dataingestion method or component")
         try:
-            df = pd.read_csv(os.path.join("src", "notebook", "stud.csv"))
+            # df = pd.read_csv(os.path.join("src", "notebook", "stud.csv"))
+            df = pd.read_csv(os.path.join("..", "notebook", "stud.csv"))
+
             logging.info('Read Dataset as dataframe')
             os.makedirs(os.path.dirname(self.ingenstion_config.train_data_path),exist_ok=True)
             df.to_csv(self.ingenstion_config.raw_data_path,index=False,header=True)
@@ -40,7 +41,6 @@ class DataIngestion:
         
 
 
-
            
 if __name__=="__main__":
     obj=DataIngestion()
@@ -49,4 +49,6 @@ if __name__=="__main__":
     data_transformation=DataTransformation()
     train_arr,test_arr,_=data_transformation.initiate_dta_transformation(train_data,test_data)
     
+    modeltrainer=ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr,test_arr))
     

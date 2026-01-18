@@ -25,7 +25,7 @@ class DataTransformation:
             num_pipeline=Pipeline(steps=[("imputer",SimpleImputer(strategy="median")),
                                          ("scalar",StandardScaler())])
             cat_pipeline=Pipeline(steps=[("imputer",SimpleImputer(strategy="most_frequent")),
-                                         ("one_hot_encorder",OneHotEncoder()),
+                                         ("one_hot_encorder",OneHotEncoder(handle_unknown="ignore")),
                                          ("scalar",StandardScaler(with_mean=False))])
             logging.info(f"Categoricalcolums:{categorical_columns}")
             logging.info(f"Numericcolumns:{numerical_columns}")

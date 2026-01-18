@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Math Score Predictor</title>
+</head>
+<body>
+    <h2>Student Math Score Prediction</h2>
+
+    <form action="/predict" method="post">
+
+        Gender:
+        <select name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select><br><br>
+
+        Race/Ethnicity:
+        <input type="text" name="race_ethnicity" placeholder="group C"><br><br>
+
+        Parental Education:
+        <input type="text" name="parental_level_of_education"><br><br>
+
+        Lunch:
+        <select name="lunch">
+            <option value="standard">Standard</option>
+            <option value="free/reduced">Free/Reduced</option>
+        </select><br><br>
+
+        Test Preparation:
+        <select name="test_preparation_course">
+            <option value="none">None</option>
+            <option value="completed">Completed</option>
+        </select><br><br>
+
+        Reading Score:
+        <input type="number" name="reading_score" required><br><br>
+
+        Writing Score:
+        <input type="number" name="writing_score" required><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <h3>{{ prediction }}</h3>
+    {% endif %}
+</body>
+</html>
